@@ -78,4 +78,6 @@ class Solution():
                         queue += [(row + dx[j], col+dy[j])]
     ##通过bfs和dfs都可以解决的问题，一般通过bfs更加简单和快捷。
         
+
+##还可以通过并查集的方法求解：
     
