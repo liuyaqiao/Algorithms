@@ -79,6 +79,40 @@ class Solution():
     ##通过bfs和dfs都可以解决的问题，一般通过bfs更加简单和快捷。
         
 
+class Solution:
+    def numIslands(self, grid: 'List[List[str]]') -> 'int':
+        if not grid:
+            return 0
+        
+        rows = len(grid)
+        cols = len(grid[0])
+        number = 0
+        visited = [[False for _ in range(cols)] for _ in range(rows)]
+
+                
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j] == '1' and visited[i][j] == False:
+                    number += 1
+                    self.bfs(visited, grid, i, j)
+        
+        return number
+        
+    def bfs(self, visited, grid, i, j):
+        queue = collections.deque([(i,j)])
+        while queue:
+            row, col = queue.popleft()
+            if row >= 0 and row < len(grid) and col >= 0 and col < len(grid[0]):
+                if visited[row][col] == False and grid[row][col] == '1':
+                    visited[row][col] = True
+                    queue.append((row + 1, col))
+                    queue.append((row - 1, col))
+                    queue.append((row, col - 1))
+                    queue.append((row, col + 1))
+                    
+        
+
+
 ##还可以通过并查集的方法求解：
 class Solution():   
     father = []
@@ -127,3 +161,4 @@ class Solution():
                 count += 1
         return count
     
+
