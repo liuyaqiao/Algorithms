@@ -43,4 +43,5 @@ class Solution:
 这里比较tricky的一个地方是如何获取下一个words的list，这里使用
 两个list去合并。
 
+每次for循环中会判断queue中出队的元素有没有被访问过
 '''
