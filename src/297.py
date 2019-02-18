@@ -36,6 +36,9 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
+        if not data:
+            return None
+
         bfs_order = [
             TreeNode(int(val)) if val != 'null' else None
             for val in data.split()
@@ -68,5 +71,7 @@ class Codec:
 反序列化是就是按照这个数组挨个复原。
 尽量避免递归的调用，这个数组和heap的存储结构类似。
 可以用一个slow一个fast挨个遍历。
+
+通过一个split来断开每一个字符
 
 '''
