@@ -21,3 +21,17 @@ class Solution(object):
         t1.left = self.mergeTrees(t1.left, t2.left)
         t1.right = self.mergeTrees(t1.right, t2.right)
         return t1
+
+'''
+这是一个divide and conquer
+
+明确这个函数返回的是：
+
+当前节点合并以后的节点；
+我们计算出他的left和right就可以求出届
+
+最后返回的是root
+
+
+
+'''
