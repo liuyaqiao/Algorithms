@@ -18,3 +18,58 @@ for i in range(len(nums)):
     这里使用时需要注意，i > 0这个条件要在前面防止越界。
 ```
 
+## python class 变量声明：
+
+在python类的定义中，基本有三种方式：
+
+```
+1.
+class A():
+    def __init__(self):
+        self.nums = []
+    def update(self):
+        self.nums.append(1)
+        print (self.nums)
+        
+print:
+[1]
+[1]
+[1]
+
+2.
+class A():
+    nums = []
+    def update(self):
+        self.nums.append(1)
+        print (self.nums)
+
+print:
+[1]
+[1,1]
+[1,1,1]
+
+3.
+class A():
+    def update(self):
+        self.nums = []
+        self.nums.append(1)
+        print (self.nums)
+        
+print:
+[1]
+[1]
+[1]
+
+
+test:
+
+if __name__ == "__main__":
+    a = A()
+    a.update()
+    b = A()
+    b.update()
+    c = A()
+    c.update()
+```
+
+在第二种写法，我们这里的nums被所有的对象所共有；一个对象的改变就会带来所有对象中nums的改变。
