@@ -73,3 +73,24 @@ if __name__ == "__main__":
 ```
 
 在第二种写法，我们这里的nums被所有的对象所共有；一个对象的改变就会带来所有对象中nums的改变。
+
+## python 中的range
+
+在python中的range循环不同于c++,java中的for循环：
+
+```
+for i in range(5):
+    i += 1
+    print(i)
+
+#1,2,3,4,5
+
+for(int i = 0; i < 5; i ++) {
+    printf("%d", i);
+}
+
+#1,3,5
+
+python中的range操作给出的i是固定的，循环体的对i的操作不能改变i的取值个数；如果要改变，应该使用while循环。
+
+```
