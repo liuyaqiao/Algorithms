@@ -28,4 +28,7 @@ class Solution(object):
         else:
             return self.isSame(s.left, t.left) and self.isSame(s.right, t.right)
         
-        
+'''
+主要的关注点是
+对于s是否为None的判断
+'''

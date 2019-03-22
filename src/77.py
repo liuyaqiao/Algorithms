@@ -1,26 +1,17 @@
-class Solution(object):
-    def combine(self, n, k):
-        """
-        :type n: int
-        :type k: int
-        :rtype: List[List[int]]
-        """
-        if k > n:
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        if k == 0:
             return []
-        
-        nums = [i for i in range(1, n + 1)]
+        nums = [i + 1 for i in range(n)]
         result = []
-        self.dfs(nums, result, 0, [], k)
-        
+        self.helper(nums, [], result, 0, k)
         return result
-        
-        
-    def dfs(self, nums, result, index, temp, k):
-        if len(temp) == k:
-            result.append(temp + [])
-        else:
-            for i in range(index, len(nums)):
-                temp.append(nums[i])
-                self.dfs(nums, result, i + 1, temp, k)
-                temp.pop()
     
+    def helper(self, nums, temp, result, index, k):
+        if len(temp) == k:
+            result.append([] + temp)
+            
+        for i in range(index, len(nums)):
+            temp.append(nums[i])
+            self.helper(nums, temp, result, 1 + i, k)
+            temp.pop()

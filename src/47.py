@@ -28,3 +28,17 @@ class Solution(object):
                 self.dfs(res, temp, nums, visited)
                 visited[i] = 0
                 temp.pop()
+
+
+'''
+排列与组合类似，有几个需要注意的地方：
+
+1. 需要一个visited来跳过已经取过的数；
+2. 数组一定要先排序
+3. 去重：
+    1）不是首元素
+    2）和前一个元素相等
+    3）前一个元素还没有取过
+    (去一个)
+
+'''

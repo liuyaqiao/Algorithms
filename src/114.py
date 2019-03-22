@@ -54,6 +54,25 @@ class Solution(object):
         return root
 
 
+    def helper(self, root):
+        # return last node with root
+        if not root:
+            return None
+        
+        left = self.helper(root.left)
+        right = self.helper(root.right)
+        
+        if left != None:
+            root.right = left
+            root.left = None
+            rightmost = left
+            while rightmost.right != None:
+                rightmost = rightmost.right
+            rightmost.right = right
+        return root
+                
+
+
 '''
 一个树类型的题通常有两种方法：
 1. tranverse : 用一个全局变量来记录tranverse的位置，注意一下遍历的顺序
@@ -64,4 +83,10 @@ class Solution(object):
 
 需要分别考虑left和right的返回，同时考虑集中情况。
 
+这里必须是right在前，left在后的情况。如果交换结果会出现错误。
+
+3. 也可以有第三种写法，这里left和right表示的是左右第一个节点。
+这里返回的值可以自己定义，这种定义方法更为简单。这里最后一步写连接
+的时候，要想象左右两边的子树都已经成了完美的形式，再去写连接的代码，
+这样可以考虑到最全面的条件。
 '''

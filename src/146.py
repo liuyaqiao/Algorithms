@@ -1,0 +1,62 @@
+class ListNode:
+    def __init__(self, key = None, value = None, next = None):
+        self.key = key
+        self.value = value
+        self.next = next
+
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.head = ListNode()
+        self.tail = self.head
+        self.hash = {}
+        self.capacity = capacity
+    
+    def push_back(self, node):
+        self.hash[node.key] = self.tail
+        self.tail.next = node
+        self.tail = node
+    
+    def pop_front(self):
+        del self.hash[self.head.next.key]
+        self.head.next = self.head.next.next
+        self.hash[self.head.next.key] = self.head
+        
+    def kick(self, prev):
+        node = prev.next
+        if node == self.tail:
+            return
+        prev.next = node.next
+        if node.next is not None:
+            self.hash[node.next.key] = prev
+            node.next = None
+        self.push_back(node)
+        
+    def get(self, key: int) -> int:
+        if key not in self.hash:
+            return -1
+        self.kick(self.hash[key])
+        return self.hash[key].next.value
+    
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.hash:
+            self.kick(self.hash[key])
+            self.hash[key].next.value = value
+        else:
+            node = ListNode(key, value)
+            self.push_back(node)
+            if len(self.hash) > self.capacity:
+                self.pop_front()
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+
+
+'''
+用hash表记下当前节点的prev！
+'''

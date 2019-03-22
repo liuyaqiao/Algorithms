@@ -24,4 +24,9 @@ class Solution(object):
             temp.pop()
             
         
-        
+'''
+1. dfs tree的得出
+2. temp + []
+3. 几个变形
+
+'''

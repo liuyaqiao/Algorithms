@@ -24,3 +24,10 @@ class Solution(object):
         self.maxVal = max(self.maxVal, left + right)
         
         return max(left, right) + 1
+
+'''
+求最大直径，使用最大depth的算法，用一个全局变量来储存
+最大直径。
+
+全局变量在树中经常用到。
+'''

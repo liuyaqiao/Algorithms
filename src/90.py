@@ -1,29 +1,24 @@
-class Solution(object):
-    def subsetsWithDup(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        res = []
-        if len(nums) == 0:
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        if not nums:
             return []
-        
         nums.sort()
-        visited = [0 for i in range(len(nums))]
+        result = []
+        self.dfs(nums, [], result, 0)
+        return result
         
-        self.dfs([], res, 0, nums, visited)
-        return res
-    
-    def dfs(self, temp, res, index, nums, visited):
-        res.append(temp + [])
+        
+    def dfs(self, nums, temp, result, index):
+        result.append(temp + [])
         
         for i in range(index, len(nums)):
-            if i > index and nums[i] == nums[i - 1]:
+            if i > index and nums[i - 1] == nums[i]:
                 continue
-            
+
             temp.append(nums[i])
-            visited[i] = 1
-            self.dfs(temp, res, i + 1, nums, visited)
-            visited[i] = 0
+            self.dfs(nums, temp, result, i + 1)
             temp.pop()
-            
+
+'''
+1. 判断和前面的数字相等
+'''
